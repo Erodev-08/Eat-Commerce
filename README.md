@@ -27,6 +27,72 @@ Laravel has the most extensive and thorough [documentation](https://laravel.com/
 
 If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
+## Instalación y ejecución (paso a paso)
+
+Requisitos previos:
+- PHP (versión compatible con el proyecto, por ejemplo 8.0+)
+- Composer
+- Node.js y npm o yarn
+- Servidor de base de datos (MySQL, MariaDB o PostgreSQL)
+- Git
+
+Pasos:
+
+1. Clonar el repositorio y entrar en la carpeta:
+```bash
+git clone https://github.com/Erodev-08/Eat-Commerce.git
+cd Eat-Commerce
+```
+
+2. Instalar dependencias PHP:
+```bash
+composer install
+```
+
+3. Copiar el archivo de entorno y generar la clave de la aplicación:
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+4. Configurar .env (editar los valores de BD, MAIL, etc.):
+- DB_CONNECTION, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD
+
+5. Ejecutar migraciones y seeders (si existen):
+```bash
+php artisan migrate
+php artisan db:seed
+```
+
+6. Crear enlace de almacenamiento (si utiliza storage público):
+```bash
+php artisan storage:link
+```
+
+7. Instalar y compilar assets de frontend:
+```bash
+npm install
+npm run dev    # para desarrollo
+# o
+npm run build  # para producción
+```
+
+8. Levantar el servidor de desarrollo:
+```bash
+php artisan serve
+```
+Abrir en el navegador: http://127.0.0.1:8000
+
+Comandos útiles adicionales:
+- Ejecutar workers de colas: php artisan queue:work
+- Ejecutar tareas programadas (cron): * * * * * php /ruta/a/artisan schedule:run >> /dev/null 2>&1
+- Optimizar configuración para producción:
+```bash
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
 ## Laravel Sponsors
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).

@@ -1,18 +1,26 @@
 <?php
 
+#Estas son las rutas no las borren 
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 
+#Rutas para la página de inicio y el dashboard
+
 Route::get('/', function () {
     return view('welcome');
 });
 
+#Ruta para el dashboard, solo accesible para usuarios autenticados y verificados
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+#Rutas para el perfil, solo accesibles para usuarios autenticados
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
